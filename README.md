@@ -1,6 +1,9 @@
 # Mandelbrot Set Viewer
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started). To learn React, check out the [React documentation](https://reactjs.org/).
+
+![The Mandelbrot Set]("/public/mandelbrot.png")
+
 ## Math Explained
 
 The Mandelbrot Set contains complex numbers which have `sqrt(-1)` as a component. This "imaginary" component is represented by `i`. This Mandelbrot Set visualization represents these complex numbers in the XY-plane.
