@@ -6,37 +6,33 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Math Explained
 
-The Mandelbrot Set contains complex numbers which have `sqrt(-1)` as a component. This "imaginary" component is represented by `i`. This Mandelbrot Set visualization represents these complex numbers in the XY-plane.
+The Mandelbrot Set contains complex numbers, numbers which have `sqrt(-1)` as a component. This "imaginary" component is represented by the symbol `i`. This Mandelbrot Set visualizer represents these complex numbers as a shape in the XY-plane.
 
 ### Set Definition
-For an imaginary number `c` and a corresponding set of imaginary numbers `z(n)` where `z(0) = 0` and `z(n+1) = z(n)^2, + c`, `c` is considered to be part of the Mandelbrot Set if `|z| <= 2` for `n ∈ [0, inf)`.
+For an imaginary number `c` and a corresponding set of imaginary numbers `z(n)` where `z(0) = 0` and `z(n+1) = z(n)^2 + c`, `c` is considered to be part of the Mandelbrot Set if `|z| <= 2` for `n ∈ [0, inf)`.
 
 ### Representing Complex Numbers in 2D
 The complex numbers `c` and `z(n)` have real and imaginary components and can be represented as a sum of these two components `x + yi`. These two components are independent and their magnitudes can be mapped to points in 2D space `[x,y]`.
 
 ### Squaring a Complex Number
-This can be understood using the two part representation `x + yi`:
 ```
-z(n)^2
-(x + yi)^2
-(x + yi) * (x + yi)
-x^2 + 2xyi + (y^2 * i^2)
-x^2 + 2xyi + (y^2 * sqrt(-1)^2)
-x^2 + 2xyi + (y^2 * -1)
-x^2 + 2xyi + (-y^2)
-x^2 - y^2 + 2xyi
-(x^2 - y^2) + (2xy)i
+(z[n])^2                          // z[n] represents z(n) for clarity
+= (x + yi)^2                      // rewrite z[n] as x + yi
+= (x + yi) * (x + yi)
+= x^2 + 2xyi + (y^2)(i^2)
+= x^2 + 2xyi + (y^2)(sqrt[-1])^2  // rewrite i^2 using the fact that i is the square root of -1
+= x^2 + 2xyi - y^2                // the square and square root cancel, leaving -1 and flipping the sign of y^2
+= (x^2 - y^2) + (2xy)i            // the parentheses show how this number can also be written in the form x + yi
 ```
 
 ### Calculating `z(n+1)` from `z(n)` and `c`
-After applying the squaring process above to `z(n)` just add the magnitude of each component of `c` to the corresponding component of the squared number. The reasoning is:
+After applying the squaring process above to `z(n)` just add each component of `c` to the corresponding component of the squared number. The reasoning is:
 ```
-z(n)^2 + c
-(xz + yzi)^2 + (xc + yci)
-(xz + yzi) * (xz + yzi) + (xc + yci)
-xz^2 - yz^2 + 2xzyzi + (xc + yci)
-xz^2 - yz^2 + xc + 2xzyzi + yci
-(xz^2 - yz^2 + xc) + (2xzyz + yc)i
+z[n+1]                                                 // z[n] and z[n+1] represent z(n) and z(n+1) for clarity, x[z] and y[z] represent the real and imaginary components of z[n], x[c] and y[c] represent those of c 
+= (z[n])^2 + c                                         // z[n] represents z(n) for clarity                
+= ((x[z])^2 - (y[z])^2 + 2x[z]y[z]i) + (x[c] + y[c]i)  // rewrite (z[n])^2 using the result from "Squaring a Complex Number"
+= (x[z])^2 - (y[z])^2 + x[c] + 2x[z]y[z]i + y[c]i      // group imaginary terms together
+= (x[z]^2 - y[z]^2 + x[c]) + (2x[z]y[z] + y[c])i       // the parentheses show how this number can also be written in the form x + yi
 ```
 
 ## Available Scripts
